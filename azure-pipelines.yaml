@@ -87,6 +87,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'destroy'
+        commandOptions: '--var="client_id=$(client_id)" --var="client_secret=$(client_secret)" --var="subscription_id=$(subscription_id)" --var="tenant_id=$(tenant_id)" --var="location=$(location)" --var="application_type=$(application_type)" --var="vm_admin_username=$(vm_admin_username)" --var="resource_group=$(resource_group)"'
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
         environmentServiceNameAzureRM: '$(azureServiceConnectionId)'
 
