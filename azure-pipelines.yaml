@@ -35,7 +35,7 @@ stages:
         terraformVersion: '1.2.9'
 
     # Run Terraform Init on the pipeline agent 
-    - task: TerraformTaskV3@3
+    - task: TerraformTaskV3@0
       displayName: 'Terrafom init'
       inputs:
         provider: 'azurerm'
@@ -44,10 +44,10 @@ stages:
         backendServiceArm: '$(azureServiceConnectionId)'
         backendAzureRmResourceGroupName: 'Azuredevops'
         backendAzureRmStorageAccountName: 'tfstate2956911013'
-        backendAzureRmContainerName: 'tfstate'
+        backendAzureRmContainerName: 'tfstate2956911013'
         backendAzureRmKey: 'test.terraform.tfstate'
 
-    - task: TerraformTaskV3@3
+    - task: TerraformTaskV3@0
       displayName: Terraform validate
       inputs:
         provider: 'azurerm'
@@ -57,17 +57,17 @@ stages:
     # Generate an SSH key pair in your local/AZ Cloud shell. Use the public key in the Terraform VM module. 
     # Install public key and private key file to the pipeline agent, using the task below. 
     # ToDo: Change the inputs value below
-    # - task: InstallSSHKey@0
-    #   inputs:
-    #     knownHostsEntry: 'KNOWN_HOSTS_STRING' # variable value
-    #     sshPublicKey: 'PUBLIC_KEY'            # variable value
-    #     sshKeySecureFile: 'id_rsa' # Use secure file feature in the pipeline library UI to save the "id_rsa" file, as mentioned here: https://learn.microsoft.com/en-us/azure/devops/pipelines/library/secure-files?view=azure-devops#add-a-secure-file
+    - task: InstallSSHKey@0
+      inputs:
+        knownHostsEntry: 'vs-ssh.visualstudio.com' # variable value
+        sshPublicKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDO2r4UuEpQI1y4jsgPrDlPoV/o97Y+qBzzcEoKcYutsqBiruM6OrKCWpbh1FICRt6V8qWHcGHv0rqai+a72kdOLoDeITBHuy2WrkkfWDjcF1zQC1p/MnFaYL/LTNbkknfrNiEelM6qmnIMkmFVLR4FWQ/gd8a4i7MWCyTEm8hh9d0FOwpliQhAiOhITPww3+GxTRamfGzdATyU56Fq+2QIbFxdqcm3HF6bd3NKihWihDmE1s1N0cG3OlKGvMmMBo9PuUWS2pRIamo/H6kuVRsKdqw5I8CnsfbNUt1MxMebdk2O5LnwtLvVo4KiXRMo4WcKYrXIU0OOkcqLgnBLPXBPJ9p+0zVJ0bTyHXgVTzEYj0F3nUDdwvKnaOa9TS1C0e6KtYSxKCFpS2V/zWAZ/3VKUX6q6CLfOOGnEN9hNqBMEDNOjKp7Lib02Is0yzVy71gIrB590zTO4qmjO842XhBsz/trKKOjWD0W99mKdaBcq8vrER1VdVKJ5SIZEsdzaFVripH92iDmVfVvMsmLlCdAiHSEWumdU8GOva08UfPzNhcgvc555nJW5XVXcbPrAeOwFdOxpZjVtGuh+w0o8rJSYJVlZvlhS1dZFnVZnPeWqr22m2olp65YKffvSB+aPgRx7T1D1LlnTCinu9ZZbGAWPFyH0GhyqrcECLudUXml8w== rujinwong@cc-9a436514-848dd567cc-9rfqz'            # variable value
+        sshKeySecureFile: 'id_rsa' # Use secure file feature in the pipeline library UI to save the "id_rsa" file, as mentioned here: https://learn.microsoft.com/en-us/azure/devops/pipelines/library/secure-files?view=azure-devops#add-a-secure-file
     
-    # - task: DownloadSecureFile@1
-    #  name: udacity_public_key
-    #  displayName: 
-    #  inputs:
-    #   secureFile: 
+    - task: DownloadSecureFile@1
+     name: udacity_public_key
+     displayName: 
+     inputs:
+      secureFile: 
 
     
     # Run Terraform Apply
@@ -76,7 +76,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'apply'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test-vm'
         environmentServiceNameAzureRM: '$(azureServiceConnectionId)'
 
     # ToDo: Change the workingDirectory path, as applicable to you
@@ -86,7 +86,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'destroy'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test-vm'
         environmentServiceNameAzureRM: '$(azureServiceConnectionId)'
 
 #--------------------------------------------#    
