@@ -176,9 +176,7 @@ stages:
   jobs:
   #--------------------------------------------#  
   # Deploy FakeRestAPI Web App
-  - deployment: FakeRestAPI
-    pool:
-      vmImage: 'Ubuntu-18.04'      
+  - deployment: FakeRestAPI   
     environment: test-vm
     strategy:
       runOnce:
