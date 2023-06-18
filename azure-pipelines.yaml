@@ -76,6 +76,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'apply'
+        commandOptions: '--var="client_id=$(client_id)" --var="client_secret=$(client_secret)" --var="resource_group=$(resource_group)"'
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
         environmentServiceNameAzureRM: '$(azureServiceConnectionId)'
 
