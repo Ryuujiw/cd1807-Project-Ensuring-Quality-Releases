@@ -25,6 +25,7 @@ stages:
   jobs:
   - job: BuildInfrastructure
     steps:
+    - checkout: self
     #--------------------------------------------#  
     # Use Terraform to create the Infrastructure      
     # Install Terraform on the pipeline agent 
@@ -32,7 +33,7 @@ stages:
       displayName: 'Terrafom installation'
       inputs:
         terraformVersion: '1.2.9'
-    
+
     # Run Terraform Init on the pipeline agent 
     - task: TerraformTaskV3@0
       displayName: 'Terrafom init'
