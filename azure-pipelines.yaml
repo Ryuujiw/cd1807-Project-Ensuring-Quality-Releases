@@ -188,7 +188,8 @@ stages:
               azureSubscription: '$(azureServiceConnectionId)'
               appName: 'fakerestapi-appservice'
               appType: webApp
-              package: $(Pipeline.Workspace)/$(Build.BuildId)-fakerestapi.zip
+              package: $(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip
+              deploymentMethod: zipDeploy
           #--------------------------------------------#    
           # Run JMeter test suite against the App Service
           - task: CmdLine@2
