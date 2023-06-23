@@ -24,7 +24,7 @@ def login(user, password):
     driver.find_element(By.CSS_SELECTOR, "input[id='user-name']").send_keys(user)
     driver.find_element(By.CSS_SELECTOR, "input[id='password']").send_keys(password)
     driver.find_element(By.ID, "login-button").click()
-    product_label = driver.find_element(By.CSS_SELECTOR, "div[class='product_label']").text
+    product_label = driver.find_element(By.CSS_SELECTOR, "span.title").text
     assert "Products" in product_label
     print(timestamp() + 'Login with username {:s} and password {:s} successfully.'.format(user, password))
     return driver
