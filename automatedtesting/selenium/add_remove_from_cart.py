@@ -44,7 +44,7 @@ def remove_cart(driver, n_items):
         element = "a[id='item_" + str(i) + "_title_link']"
         driver.find_element(By.CSS_SELECTOR, element).click()
         driver.find_element(By.CSS_SELECTOR, "button.btn_secondary.btn_inventory").click()
-        product = driver.find_element(By.CSS_SELECTOR, "div[class='inventory_details_name']").text
+        product = driver.find_element(By.CSS_SELECTOR, "div[class='inventory_item_name']").text
         print(timestamp() + product + " removed from shopping cart.")  # Display message saying which product was added
         driver.find_element(By.CSS_SELECTOR, "button.inventory_details_back_button").click()
     print(timestamp() + '{:d} items are all removed from shopping cart.'.format(n_items))
