@@ -251,7 +251,7 @@ stages:
 
           - task: AzureCLI@2
             inputs:
-              azureSubscription: 'rujinw'
+              azureSubscription: '$(azureServiceConnectionId)'
               scriptType: 'bash'
               scriptLocation: 'inlineScript'
               inlineScript: |
