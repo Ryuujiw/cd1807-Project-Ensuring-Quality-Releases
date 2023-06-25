@@ -245,7 +245,10 @@ stages:
                 fi
                 export PATH=$PATH:/home/devopsagent/app
                 echo "Starting Selenium Tests"
-                pwd
-                touch ~/selenium.log
-                python3 add_remove_from_cart.py >> ~/selenium.log
+                sudo mkdir -p /var/log/selenium
+                sudo chmod 664 /var/log/selenium
+                python3 -u add_remove_from_cart.py 2>&1 | sudo tee -a /var/log/selenium/selenium-test.log
+                cd $(System.DefaultWorkingDirectory)
+                mkdir -p log/selenium
+                sudo cp /var/log/selenium/selenium-test.log log/selenium/selenium-test.log
                 echo "Completed Selenium Tests. Check selenium.log for results."
