@@ -248,22 +248,17 @@ stages:
                 pwd
                 python3 add_remove_from_cart.py >> selenium.log
                 echo "Completed Selenium Tests. Check selenium.log for results."
-            
-          - task: PublishPipelineArtifact@1
-            inputs:
-              artifactName: 'selenium-logs'
-              targetPath: '/home/azureuser/app/selenium.log'
-          
-          - task: DownloadPipelineArtifact@2
-            inputs:
-              artifactName: 'selenium-logs'
-              targetPath: '/home/devopsagent/Logs'
 
-          - task: CopyFiles@2
+          - task: AzureCLI@2
             inputs:
-              sourceFolder: '$(Pipeline.Workspace)/Logs'
-              targetFolder: '/home/devopsagent/Logs'
-            displayName: 'Copy log file'
-            condition: succeeded()
-            sudo: true
-            
+              azureSubscription: 'rujinw'
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: |
+                az storage blob upload \
+                  --account-name rujinstorage0719239 \
+                  --container-name uitestlogs \
+                  --name selenium.log \
+                  --type block \
+                  --file /home/azureuser/app/selenium.log \
+                  --connection-string '$(storageconnectionstring)'
