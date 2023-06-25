@@ -257,4 +257,4 @@ stages:
           - task: DownloadPipelineArtifact@2
             inputs:
               artifactName: 'selenium-logs'
-              targetPath: '$(Pipeline.Workspace)/Logs'
+              targetPath: '/home/devopsagent/Logs'
