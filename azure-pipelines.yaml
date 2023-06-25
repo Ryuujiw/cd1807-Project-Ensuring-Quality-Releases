@@ -249,6 +249,9 @@ stages:
                 sudo chmod 664 /var/log/selenium
                 python3 -u add_remove_from_cart.py 2>&1 | sudo tee -a /var/log/selenium/selenium-test.log
                 cd $(System.DefaultWorkingDirectory)
+                pwd
                 mkdir -p log/selenium
+                pwd
                 sudo cp /var/log/selenium/selenium-test.log log/selenium/selenium-test.log
+                ls -la
                 echo "Completed Selenium Tests. Check selenium.log for results."
