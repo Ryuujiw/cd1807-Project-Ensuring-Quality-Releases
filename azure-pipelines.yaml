@@ -258,3 +258,12 @@ stages:
             inputs:
               artifactName: 'selenium-logs'
               targetPath: '/home/devopsagent/Logs'
+
+          - task: CopyFiles@2
+            inputs:
+              sourceFolder: '$(Pipeline.Workspace)/Logs'
+              targetFolder: '/home/devopsagent/Logs'
+            displayName: 'Copy log file'
+            condition: succeeded()
+            sudo: true
+            
