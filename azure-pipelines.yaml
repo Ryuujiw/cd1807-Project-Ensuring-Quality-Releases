@@ -245,5 +245,4 @@ stages:
                 echo "Starting Selenium Tests"
                 pwd
                 python3 add_remove_from_cart.py >> selenium.log
-                scp selenium.log devopsagent@172.173.172.61:/home/devopsagent/Log
                 echo "Completed Selenium Tests. Check selenium.log for results."
