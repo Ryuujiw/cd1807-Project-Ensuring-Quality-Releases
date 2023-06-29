@@ -199,7 +199,7 @@ stages:
                 wget "https://dlcdn.apache.org/jmeter/binaries/apache-jmeter-5.5.tgz"
                 tar -xf apache-jmeter-5.5.tgz
                 unzip -o $(Build.BuildId)-perftests.zip
-                ./apache-jmeter-5.5/bin/jmeter -n -t stress-test.jmx -l jmeter.log -e -o /home/devopsagent/Logs/
+                ./apache-jmeter-5.5/bin/jmeter -n -t stress-test.jmx -l jmeter.log -e -o /home/devopsagent/$(Build.BuildId)_Logs/
                 cat jmeter.log
               workingDirectory: $(Pipeline.Workspace)/drop-perftests
               
