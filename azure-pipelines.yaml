@@ -109,6 +109,11 @@ stages:
         workingDirectory: '$(System.DefaultWorkingDirectory)/automatedtesting/postman'
     # Postman Regression Test Suite    
     # ToDo: Verify the working directory
+    - task: PowerShell@2
+      inputs:
+        targetType: 'inline'
+        script: Start-Sleep -Seconds 30
+    
     - task: CmdLine@2
       displayName: Run Regression Tests
       continueOnError: true
