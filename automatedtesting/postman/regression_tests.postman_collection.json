@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "4989a2e6-21b0-4dd6-a8f1-d70afa14e878",
+		"_postman_id": "a8c0fb3a-8321-442f-8765-2ee35fe6a407",
 		"name": "Regression Tests for Employees",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -20,6 +20,16 @@
 						],
 						"type": "text/javascript"
 					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"setTimeout(function() {\r",
+							"}, 30000);"
+						],
+						"type": "text/javascript"
+					}
 				}
 			],
 			"request": {
@@ -35,8 +45,8 @@
 					}
 				},
 				"url": {
-					"raw": "http://dummy.restapiexample.com/api/v1/create",
-					"protocol": "http",
+					"raw": "https://dummy.restapiexample.com/api/v1/create",
+					"protocol": "https",
 					"host": [
 						"dummy",
 						"restapiexample",
@@ -65,14 +75,24 @@
 						],
 						"type": "text/javascript"
 					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"setTimeout(function() {\r",
+							"}, 30000);"
+						],
+						"type": "text/javascript"
+					}
 				}
 			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://dummy.restapiexample.com/api/v1/employees",
-					"protocol": "http",
+					"raw": "https://dummy.restapiexample.com/api/v1/employees",
+					"protocol": "https",
 					"host": [
 						"dummy",
 						"restapiexample",

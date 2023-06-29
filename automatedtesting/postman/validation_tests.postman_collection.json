@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "fea3b53f-d9b0-4257-bce1-f6f89ef3a356",
+		"_postman_id": "f3c59d33-a375-43e3-89ec-54d3628b7c1c",
 		"name": "Validation Tests for Employees",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -18,13 +18,24 @@
 							"pm.test(\"Status code is 200\", function () {\r",
 							"  pm.response.to.have.status(200);\r",
 							"});\r",
-							"pm.test(\"Successful response\", function () {\r",							"    pm.expect(pm.response.text()).to.include(\"success\");\r",
+							"pm.test(\"Successful response\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"success\");\r",
 							"});\r",
 							"pm.test(\"Check is is not null\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
 							"    pm.expect(jsonData.id).not.null\r",
 							"});\r",
 							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"setTimeout(function() {\r",
+							"}, 30000);"
 						],
 						"type": "text/javascript"
 					}
@@ -43,8 +54,8 @@
 					}
 				},
 				"url": {
-					"raw": "http://dummy.restapiexample.com/api/v1/create",
-					"protocol": "http",
+					"raw": "https://dummy.restapiexample.com/api/v1/create",
+					"protocol": "https",
 					"host": [
 						"dummy",
 						"restapiexample",
@@ -60,7 +71,7 @@
 			"response": []
 		},
 		{
-			"name": "Get Employee no.12",
+			"name": "Get All Employees",
 			"event": [
 				{
 					"listen": "test",
@@ -86,14 +97,24 @@
 						],
 						"type": "text/javascript"
 					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"setTimeout(function() {\r",
+							"}, 30000);"
+						],
+						"type": "text/javascript"
+					}
 				}
 			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://dummy.restapiexample.com/api/v1/employee/12",
-					"protocol": "http",
+					"raw": "https://dummy.restapiexample.com/api/v1/employee/12",
+					"protocol": "https",
 					"host": [
 						"dummy",
 						"restapiexample",
