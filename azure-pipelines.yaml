@@ -111,7 +111,8 @@ stages:
     # ToDo: Verify the working directory
     - task: PowerShell@2
       inputs:
-       script: Start-Sleep -Seconds 10
+        targetType: 'inline'
+        script: Start-Sleep -Seconds 30
     
     - task: CmdLine@2
       displayName: Run Regression Tests
