@@ -199,8 +199,8 @@ stages:
                 wget "https://dlcdn.apache.org/jmeter/binaries/apache-jmeter-5.5.tgz"
                 tar -xf apache-jmeter-5.5.tgz
                 unzip -o $(Build.BuildId)-perftests.zip
-                ./apache-jmeter-5.5/bin/jmeter -n -t stress-test.jmx -j jmeter.log -f
-                cat jmeter.log                                                                           # ToDo: Write your commands
+                ./apache-jmeter-5.5/bin/jmeter -n -t stress-test.jmx -j jmeter.log -e -f -o stress-test-html-report 
+                cat jmeter.log
               workingDirectory: $(Pipeline.Workspace)/drop-perftests
               
   #--------------------------------------------#  
